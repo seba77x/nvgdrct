@@ -5,9 +5,12 @@ class Carrera(models.Model):
 
 class MallaCurricular(models.Model):
     annoMalla = models.IntegerField()
+    carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
 
 class MatriculaMalla(models.Model):
     numeroMatriculados = models.IntegerField()
+    mallacurricular = models.ForeignKey(MallaCurricular, on_delete=models.CASCADE)
+    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
 
 class Asignatura(models.Model):
     nombre = models.CharField(max_length=50)
@@ -15,13 +18,18 @@ class Asignatura(models.Model):
     profesorAsignado = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     creditos = models.IntegerField()
     duracion = models.CharField(max_length=5)
+    mallacurricular = models.ForeignKey(MallaCurricular, on_delete=models.CASCADE)
 
 class InstanciaAsignatura(models.Model):
     anno = models.IntegerField()
     semestre = models.IntegerField()
+    asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
 
 class InscripcionAsignatura(models.Model):
     inscripcion = models.CharField(max_length=5)
+    asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
+    estadoinscripcion = models.ForeignKey(EstadoInscripcion, on_delete=models.CASCADE)
+    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
 
 class EstadoInscripcion(models.Model):
     fin = models.CharField(max_length=5)
