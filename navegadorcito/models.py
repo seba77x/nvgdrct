@@ -3,6 +3,20 @@ from django.db import models
 class Carrera(models.Model):
     nombre = models.CharField(max_length=50)
 
+class Estudiante(models.Model):
+    nombre = models.CharField(max_length=50)
+    rut = models.CharField(max_length=15)
+    Carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
+    codigoCarrera = models.IntegerField()
+    annoIngreso = models.IntegerField()
+    email = models.EmailField()
+
+
+class Profesor(models.Model):
+    nombre = models.CharField(max_length=50)
+    rut = models.CharField(max_length=15)
+    email = models.EmailField()
+
 class MallaCurricular(models.Model):
     annoMalla = models.IntegerField()
     carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
@@ -25,24 +39,15 @@ class InstanciaAsignatura(models.Model):
     semestre = models.IntegerField()
     asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
 
+class EstadoInscripcion(models.Model):
+    fin = models.CharField(max_length=5)
+
 class InscripcionAsignatura(models.Model):
     inscripcion = models.CharField(max_length=5)
     asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
     estadoinscripcion = models.ForeignKey(EstadoInscripcion, on_delete=models.CASCADE)
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
 
-class EstadoInscripcion(models.Model):
-    fin = models.CharField(max_length=5)
 
-class Estudiante(models.Model):
-    nombre = models.CharField(max_length=50)
-    rut = models.CharField(max_length=15)
-    Carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
-    codigoCarrera = models.IntegerField()
-    annoIngreso = models.IntegerField()
-    email = models.EmailField()
 
-class Profesor(models.Model):
-    nombre = models.CharField(max_length=50)
-    rut = models.CharField(max_length=15)
-    email = models.EmailField()
+
