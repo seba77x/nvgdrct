@@ -45,10 +45,10 @@ class EstadoInscripcion(models.Model):
 
 class InscripcionAsignatura(models.Model):
     inscripcion = models.CharField(max_length=5)
-    asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
+    
     estadoinscripcion = models.ForeignKey(EstadoInscripcion, on_delete=models.CASCADE)
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
-
+    asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
 
 
 

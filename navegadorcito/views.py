@@ -12,6 +12,3 @@ def profesor(request,idProfesor):
 	inscritos=asignatura.inscritos.all()
 	return render(request,'index/profesor.html', {"asignatura":asignatura, "alumnos":inscritos })
 
-def vista_estudiante(request,idEstudiante)
-	estudiante=Estudiante.objects.get(pk=idEstudiante)
-	return render(request, '', {"estudiante"=estudiante})
