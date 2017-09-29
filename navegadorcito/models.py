@@ -3,8 +3,8 @@ from django.db import models
 class Carrera(models.Model):
     nombre = models.CharField(max_length=50)
 
-        def __str__(self):
-            return self.nombre
+    def __str__(self):
+        return self.nombre
 
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=50)
@@ -14,24 +14,24 @@ class Estudiante(models.Model):
     annoIngreso = models.IntegerField()
     email = models.EmailField()
 
-        def __str__(self):
-            return self.nombre
+    def __str__(self):
+        return self.nombre
 
 class Profesor(models.Model):
     nombre = models.CharField(max_length=50)
     rut = models.CharField(max_length=15)
     email = models.EmailField()
 
-        def __str__(self):
-            return self.nombre
+    def __str__(self):
+        return self.nombre
 
 
 class MallaCurricular(models.Model):
     annoMalla = models.IntegerField()
     carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
 
-        def __str__(self):
-            return str(self.nombre)+" "+str(self.carrera)
+    def __str__(self):
+        return str(self.nombre)+" "+str(self.carrera)
 
 
 class MatriculaMalla(models.Model):
@@ -39,8 +39,8 @@ class MatriculaMalla(models.Model):
     mallacurricular = models.ForeignKey(MallaCurricular, on_delete=models.CASCADE)
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
 
-        def __str__(self):
-            return self.numeroMatriculados
+    def __str__(self):
+        return self.numeroMatriculados
 
 
 class Asignatura(models.Model):
@@ -50,36 +50,21 @@ class Asignatura(models.Model):
     creditos = models.IntegerField()
     duracion = models.CharField(max_length=5)
     mallacurricular = models.ForeignKey(MallaCurricular, on_delete=models.CASCADE)
-    inscritos = models.ManytoManyField(Estudiante,through='InscripcionAsignatura')
 
-        def __str__(self):
-            return self.nombre
-
-
-class InstanciaAsignatura(models.Model):
-    anno = models.IntegerField()
-    semestre = models.IntegerField()
-    asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
-
-        def __str__(self):
-            return "Semestre:"+str(self.semestre)+", Año: "+str(self.anno)
-
-
-class EstadoInscripcion(models.Model):
-    fin = models.CharField(max_length=5)
-
-        def __str__(self):
-            return self.fin
+    def __str__(self):
+        return self.nombre
 
 
 class InscripcionAsignatura(models.Model):
     inscripcion = models.CharField(max_length=5)
+    anno = models.IntegerField()
+    semestre = models.IntegerField()
+    fin = models.CharField(max_length=5)
     asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
-    estadoinscripcion = models.ForeignKey(EstadoInscripcion, on_delete=models.CASCADE)
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
 
-        def __str__(self):
-            return self.inscripcion
+    def __str__(self):
+        return self.inscripcion
 
 
 
