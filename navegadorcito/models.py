@@ -33,6 +33,7 @@ class Asignatura(models.Model):
     creditos = models.IntegerField()
     duracion = models.CharField(max_length=5)
     mallacurricular = models.ForeignKey(MallaCurricular, on_delete=models.CASCADE)
+    inscritos = models.ManytoManyField(Estudiante,through='InscripcionAsignatura')
 
 class InstanciaAsignatura(models.Model):
     anno = models.IntegerField()
