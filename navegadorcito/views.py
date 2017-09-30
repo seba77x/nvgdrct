@@ -9,6 +9,9 @@ def home(request):
 	return render(request, 'home.html')
 
 
+def login_acceder(request, ):
+
+
 
 #def profesor(request,idProfesor):
 #	profesor=Profesor.objects.get(pk=idProfesor)
