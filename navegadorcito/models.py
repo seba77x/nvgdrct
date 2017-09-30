@@ -31,7 +31,7 @@ class MallaCurricular(models.Model):
     carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.nombre)+" "+str(self.carrera)
+        return str(self.carrera)+" "+str(self.annoMalla)
 
 
 class MatriculaMalla(models.Model):
