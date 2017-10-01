@@ -14,9 +14,9 @@ def login_acceder(request):
 		print ('*'*50)
 		print(request.POST['user'])
 		print ('*'*50)
-		if(profesor==Profesor.object.get(rut=request.POST['user']))
+#		if(profesor==Profesor.object.get(rut=request.POST['user'])):
 			
-		if(Estudiante.objects.get(rut))
+#		if(Estudiante.objects.get(rut)):
 	else:
 		return redirect ('/')
 
