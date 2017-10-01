@@ -58,3 +58,4 @@ var color2 = "#"+((r2 << 16) | (g2 << 8) | b2).toString(16);
 }
 
 setInterval(updateGradient,10);
+

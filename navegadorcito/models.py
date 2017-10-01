@@ -58,16 +58,17 @@ class Asignatura(models.Model):
         return self.nombre
 
 
+
+
 class InscripcionAsignatura(models.Model):
     anno = models.IntegerField()
     semestre = models.IntegerField()
-    fin = models.CharField(max_length=5)
+    fin = models.CharField(max_length=10, default="actual")
     asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.inscripcion
-
+        return str(self.asignatura)+", semestre: "+str(self.semestre)+" año: "+str(self.anno)
 
 
 
