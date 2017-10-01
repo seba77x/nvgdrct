@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import *
 
 
 def login(request):
 	return render(request, 'login.html')
 
 def home(request):
-	return render(request, 'estudiante.html')
-
+	return render(request, 'estudiante.html', {'asignaturas': Asignatura.objects.all()})
 
 def login_acceder(request):
 	if request.method == "POST":
