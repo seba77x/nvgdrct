@@ -6,7 +6,7 @@ def login(request):
 	return render(request, 'login.html')
 
 def home(request):
-	return render(request, 'home.html')
+	return render(request, 'estudiante.html')
 
 
 def login_acceder(request, login):
