@@ -9,11 +9,14 @@ def home(request):
 	return render(request, 'estudiante.html')
 
 
-def login_acceder(request, login):
+def login_acceder(request):
 	if request.method == "POST":
 		print ('*'*50)
-		print(request.POST)
+		print(request.POST['user'])
 		print ('*'*50)
+		if(profesor=Profesor.object.get(rut=request.POST['user']) && )
+			render 
+		if(Estudiante.objects.get(rut))
 	else:
 		return redirect ('/')
 
