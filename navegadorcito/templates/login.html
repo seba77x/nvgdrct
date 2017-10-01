@@ -19,7 +19,7 @@
 		</div>
 		<br>
 		<div class="login">
-			<form action="{% url 'navegadorcito:login_acceder' login %}" method="post">
+			<form action="/acceder" method="post">
 				{% csrf_token %}
 				<input type="text" placeholder="RUT" name="user"><br>
 				<input type="password" placeholder="contraseña" name="password"><br>
