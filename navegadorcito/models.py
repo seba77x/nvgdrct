@@ -1,7 +1,9 @@
 from django.db import models
 
+
 class Carrera(models.Model):
     nombre = models.CharField(max_length=50)
+    codigoCarrera = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nombre
@@ -10,7 +12,6 @@ class Estudiante(models.Model):
     nombre = models.CharField(max_length=50)
     rut = models.CharField(max_length=15)
     Carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
-    codigoCarrera = models.IntegerField()
     annoIngreso = models.IntegerField()
     email = models.EmailField()
 
@@ -56,7 +57,6 @@ class Asignatura(models.Model):
 
 
 class InscripcionAsignatura(models.Model):
-    inscripcion = models.CharField(max_length=5)
     anno = models.IntegerField()
     semestre = models.IntegerField()
     fin = models.CharField(max_length=5)
