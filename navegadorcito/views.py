@@ -9,10 +9,10 @@ def home(request):
 	return render(request, 'home.html')
 
 
-def login_acceder(request, login):
+def login_acceder(request):
 	if request.method == "POST":
 		print ('*'*50)
-		print(request.POST)
+		print(request.POST['user'])
 		print ('*'*50)
 	else:
 		return redirect ('/')

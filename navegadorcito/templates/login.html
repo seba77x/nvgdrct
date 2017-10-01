@@ -19,11 +19,11 @@
 		</div>
 		<br>
 		<div class="login">
-			<form action="/acceder" method="post">
+			<form action="acceder" method="post">
 				{% csrf_token %}
 				<input type="text" placeholder="RUT" name="user"><br>
 				<input type="password" placeholder="contraseña" name="password"><br>
-				<input type="button" value="Iniciar Sesion">
+				<input type="submit" value="Iniciar Sesion">
 			</form>
 		</div>
         <div class="botonAdmin">

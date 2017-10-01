@@ -13,7 +13,8 @@ class Estudiante(models.Model):
     codigoCarrera = models.IntegerField()
     annoIngreso = models.IntegerField()
     email = models.EmailField()
-
+    password = models.CharField(max_length=30)
+    
     def __str__(self):
         return self.nombre
 
@@ -21,6 +22,7 @@ class Profesor(models.Model):
     nombre = models.CharField(max_length=50)
     rut = models.CharField(max_length=15)
     email = models.EmailField()
+    password = models.CharField(max_length=30)
 
     def __str__(self):
         return self.nombre
