@@ -7,15 +7,23 @@ def login(request):
 	return render(request, 'login.html')
 
 def home(request):
-	return render(request, 'estudiante.html', {'asignaturas': Asignatura.objects.all()})
+	return render(request, 'estudiante.html')
+
 
 def login_acceder(request):
 	if request.method == "POST":
 		print ('*'*50)
-		print(request.POST['user'])
+		usuario=request.POST['user']
+		password=request.POST['password']
+		print(usuario)
+		print(password)
 		print ('*'*50)
-#		if(profesor==Profesor.object.get(rut=request.POST['user'])):
-			
+		profesor=Profesor.objects.get(rut=usuario)
+		print(profesor)
+		if(Profesor.objects.get(rut=request.POST['user'])):
+			if (profesor.password==request.POST['password']):
+				asignatura=Asignatura.objects.filter(profesor=profesor)
+				render(request,'profesor.html',{"asignatura":asignatura})
 #		if(Estudiante.objects.get(rut)):
 	else:
 		return redirect ('/')
